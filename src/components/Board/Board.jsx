@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Square from '../Square/Square';
 import style from './Board.scss';
 
@@ -27,5 +28,10 @@ const Board = ({ tabSquares, selectSquare }) => (
     }
   </div>
 );
+
+Board.propTypes = {
+  selectSquare: PropTypes.func.isRequired,
+  tabSquares: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default Board;
