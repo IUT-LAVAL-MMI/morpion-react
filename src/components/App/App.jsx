@@ -2,7 +2,7 @@ import React from 'react';
 
 import Game from '../Game/Game';
 
-const App = ({ title }) => (
+const App = () => (
   <Game />
 );
 

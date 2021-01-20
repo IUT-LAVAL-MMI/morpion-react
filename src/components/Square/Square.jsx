@@ -1,11 +1,10 @@
 import React from 'react';
-import style from './Square.scss';
 import classNames from 'classnames';
 
-const Square = () => {
-    return (
-        <button className={classNames(style.case)} type="button">X</button>
-    )
-}
+import style from './Square.scss';
+
+const Square = ({ selectSquare, value }) => (
+  <button className={classNames(style.case)} onClick={() => selectSquare()} type="button">{value}</button>
+);
 
 export default Square;
