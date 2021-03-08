@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { observer } from 'mobx-react';
 import classNames from 'classnames';
 import style from './Status.scss';
+import rootStore from '../../model/store';
 
-const Status = ({ status }) => (
-  <label className={classNames(style.statusContainer)}>{status}</label>
-);
-
-Status.propTypes = {
-  status: PropTypes.string.isRequired,
-};
+const Status = observer(() => {
+  const { game } = useContext(rootStore);
+  return (
+    <label className={classNames(style.statusContainer)}>{game.statusTitle}</label>
+  );
+});
 
 export default Status;
