@@ -3,4 +3,17 @@
   flex-wrap: wrap;
   justify-content: center;
   margin:auto;
+
+  div {
+    margin: 0px 5px 0px 5px;
+  }
+
+  .histocol {
+    align-items: center;
+    min-width: 40%;
+
+    ul {
+      padding: 0
+    }
+  }
 }
