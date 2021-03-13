@@ -1,22 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeStep } from '../../model/features/game/gameSlice';
 import Step from '../Step/Step';
 import style from './History.scss';
 
-const History = ({ historyLength, goToStep }) => {
+const History = () => {
+  // Selecteur pour récupérer une info particulière du state (ici la taille de l'historique)
+  const historyLength = useSelector((state) => state.game.history.length);
+  // Dispatch pour envoyer une action redux (ici utiliser avec playTurn)
+  const dispatch = useDispatch();
+
   const tab = Array(historyLength).fill(null)
-    // eslint-disable-next-line react/no-array-index-key
-    .map((_, index) => <li key={index}><Step goToStep={goToStep} stepNumber={index} /></li>);
+    .map((_, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <li key={index}>
+        <Step
+          goToStep={(stepIdx) => dispatch(changeStep(stepIdx))}
+          stepNumber={index}
+        />
+      </li>
+    ));
   return (
     <ul className={style.history}>
       {tab}
     </ul>
   );
-};
-
-History.propTypes = {
-  historyLength: PropTypes.number.isRequired,
-  goToStep: PropTypes.func.isRequired,
 };
 
 export default History;

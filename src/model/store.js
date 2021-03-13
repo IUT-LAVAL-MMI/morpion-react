@@ -1,6 +1,10 @@
-import { createStore } from 'redux';
-import morpionApp from './morpionApp';
+import { configureStore } from '@reduxjs/toolkit';
+import gameReducer from './features/game/gameSlice';
+import asyncDemoReducer from './features/asyncDemo/asyncDemoSlice';
 
-const STORE = createStore(morpionApp);
-
-export default STORE;
+export default configureStore({
+  reducer: {
+    game: gameReducer,
+    asyncDemo: asyncDemoReducer,
+  },
+});
